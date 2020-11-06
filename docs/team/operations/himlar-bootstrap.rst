@@ -44,9 +44,10 @@ Procedure
 1. Make sure the dhcp and tftp services are allowed through the firewall, if
    RHEL 7/Centos 7:
 
-   **iptables -I INPUT 1 -i <mgmt interface for environment> -p udp --dport 67:68 --sport 67:68 -j ACCEPT**
+:: shell
 
-   **iptables -I INPUT 1 -i <mgmt interface for environment> -p udp --dport 69 -j ACCEPT**
+    iptables -I INPUT 1 -i <mgmt interface for environment> -p udp --dport 67:68 --sport 67:68 -j ACCEPT
+    iptables -I INPUT 1 -i <mgmt interface for environment> -p udp --dport 69 -j ACCEPT
 
 #. Enable NAT of relevant mgmt interface on the login node out through the public facing interface
 
