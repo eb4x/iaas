@@ -11,14 +11,18 @@ loc=[**bgo|osl|test01|test02|local1|local2|local3|...**]
 Prerequisites
 -------------
 
-- A login node (with an up-to-date */opt/[himlar|repo]* hiearchy) which is
-  maintained by `Puppet`
-- No management-node installed (`controller`)
-- *hieradata/${loc}/common.yaml*, *hieradata/common/common.yaml*, *hieradata/nodes/${loc}/...*
-  etc. are populated with relevant data
-- puppet is disabled on new nodes:
+$loc-login-01
+^^^^^^^^^^^^^
 
-  ensure **$loc/modules/puppet.yaml** includes *puppet::runmode: 'none'*
+- A (virtual) machine with an interface on the mgmt network, and connection to the internet (optionally on a separate interface to provide NAT'ed internet-access for the rest of the machines)
+- An up-to-date `/opt/himlar <https://github.com/norcams/himlar>`
+
+Location overrides;
+  - hieradata/nodes/${loc}/
+  - hieradata/${loc}/common.yaml,
+
+Things to note
+* ensure **$loc/modules/puppet.yaml** includes *puppet::runmode: 'none'*
 
 - All commands run as the admin user (`root`) unless noted
   (consult the document `2FA on jumphosts (login nodes) <https://iaas.readthedocs.io/en/latest/team/getting_started/two-factor-authentication.html>`_)
